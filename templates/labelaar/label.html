@@ -3,12 +3,22 @@
 {% block main %}
     <section class="jumbotron text-center">
         <div class="container">
-            <h1>{{ document.text }}</h1>
-            <p>
-                {% for label in labels %}
-                    <a href="#" class="btn btn-primary my-2">{{ label.title }}</a>
-                {% endfor %}
-            </p>
+            <form method="post" action="#">
+                <input name="document_id" value="{{ document.id }}" type="hidden" />
+                <h1>{{ document.text }}</h1>
+                <p>
+                    {% for label in labels %}
+                        <div class="btn btn-primary">
+                            <input id="label_{{ label.id }}" type="checkbox" name="label_{{ label.id }}" value="1"/>
+                            <label for="label_{{ label.id }}" class="no-margin">{{ label.title }}</label>
+                        </div>
+                    {% endfor %}
+                </p>
+                <p>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </p>
+                {% csrf_token %}
+            </form>
         </div>
     </section>
 
