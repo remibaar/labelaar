@@ -1,0 +1,7 @@
+{% extends "admin/change_list.html" %} {% load i18n %}
+{% block object-tools-items %}
+    <li>
+        <a class="historylink" href="{% url 'admin:app_document_export' %}">Export all documents</a>
+    </li>
+    {{ block.super }}
+{% endblock %}
